@@ -1,98 +1,122 @@
 <div class="max-w-6xl mx-auto bg-white px-4">
-  <!-- BVB Logo ve Başlık -->
-  <div class="flex items-center gap-3 mb-1">
-    <div class="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center font-bold text-black">
-      <span>BVB</span>
+  <!-- Başlık Alanı -->
+  <header class="mb-6">
+    <div class="flex items-center gap-3 mb-1">
+      <div class="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center font-bold text-black">
+        <span>BVB</span>
+      </div>
+      <h1 class="text-2xl font-bold">Laufleistung</h1>
     </div>
-    <h1 class="text-2xl font-bold">Laufleistung</h1>
-  </div>
+    <div class="w-full h-0.5 bg-yellow-400"></div>
+  </header>
 
-  <!-- Sarı Çizgi -->
-  <div class="w-full h-0.5 bg-yellow-400 mb-6"></div>
+  <!-- Tablo Yapısı -->
+  <table class="stats-table">
+    <!-- Tablo Başlıkları -->
+    <thead>
+      <tr class="bg-gray-100">
+        <!-- Etiket Sütunu Başlığı Boşluğu -->
+        <th class="label-column py-4"></th>
 
-  <!-- Tablo Header (Gri Arka plan) -->
-  <div class="bg-gray-100 py-4 flex mb-1">
-    <!-- Boş sol alan -->
-    <div class="w-[30%]"></div>
+        <!-- 1. HZ Başlığı -->
+        <th class="bar-column py-4 font-normal text-center">
+          <div class="flex justify-center items-center">
+            <div class="w-4 h-4 bg-yellow-400 mr-1.5"></div>
+            <span class="text-xs">1. HZ</span>
+          </div>
+        </th>
 
-    <!-- Sağ alan kolonları (başlıklar) -->
-    <div class="w-[70%] flex">
-      <!-- 1. HZ (Sarı Kare) -->
-      <div class="flex-1 flex justify-center items-center">
-        <div class="w-4 h-4 bg-yellow-400"></div>
-        <div class="text-xs ml-1.5">1. HZ</div>
-      </div>
+        <!-- 2. HZ Başlığı -->
+        <th class="bar-column py-4 font-normal text-center">
+          <div class="flex justify-center items-center">
+            <div class="w-4 h-4 bg-black mr-1.5"></div>
+            <span class="text-xs">2. HZ</span>
+          </div>
+        </th>
 
-      <!-- 2. HZ (Siyah Kare) -->
-      <div class="flex-1 flex justify-center items-center">
-        <div class="w-4 h-4 bg-black"></div>
-        <div class="text-xs ml-1.5">2. HZ</div>
-      </div>
+        <!-- 90 Min Durchs. Başlığı -->
+        <th class="value-column py-4 font-normal text-center relative">
+          <div class="flex justify-center items-center">
+            <span class="mr-1">⏱</span>
+            <span class="text-xs">90 Min Durchs.</span>
+          </div>
+          <!-- Dikey Çizgi -->
+          <div class="absolute w-px bg-gray-300 h-[500px] bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full z-10"></div>
+        </th>
 
-      <!-- 90 Min (Kronometre Sembolü) -->
-      <div class="flex-1 flex justify-center items-center relative">
-        <div class="flex items-center">
-          <span class="mr-1">⏱</span>
-          <span class="text-xs">90 Min Durchs.</span>
-        </div>
-        <!-- 90 Min Durchs. altından inen dikey çizgi -->
-        <div class="absolute w-px bg-gray-300 h-[500px] bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full z-10"></div>
-      </div>
+        <!-- Gesamtes Spiel Başlığı -->
+        <th class="value-column py-4 font-normal text-center">
+          <span class="text-xs">Gesamtes Spiel</span>
+        </th>
 
-      <!-- Gesamtes Spiel -->
-      <div class="flex-1 flex justify-center items-center">
-        <span class="text-xs">Gesamtes Spiel</span>
-      </div>
+        <!-- Ø Saison Başlığı -->
+        <th class="value-column py-4 font-normal text-center">
+          <div class="flex justify-center items-center">
+            <div class="w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center text-[6px] font-bold mr-1.5">BVB</div>
+            <span class="text-xs">Ø Saison</span>
+          </div>
+        </th>
 
-      <!-- Ø Saison (BVB Logo) -->
-      <div class="flex-1 flex justify-center items-center">
-        <div class="w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center text-[6px] font-bold">BVB</div>
-        <span class="text-xs ml-1.5">Ø Saison</span>
-      </div>
+        <!-- Ø Liga Başlığı -->
+        <th class="value-column py-4 font-normal text-center">
+          <div class="flex justify-center items-center">
+            <span class="text-red-600 text-xs font-bold mr-1">L</span>
+            <span class="text-xs">Ø Liga</span>
+          </div>
+        </th>
+      </tr>
+    </thead>
 
-      <!-- Ø Liga (L Logo) -->
-      <div class="flex-1 flex justify-center items-center">
-        <span class="text-red-600 text-xs font-bold mr-1">L</span>
-        <span class="text-xs">Ø Liga</span>
-      </div>
-    </div>
-  </div>
+    <!-- Tablo Satırları -->
+    <tbody>
+      @for (row of rows(); track $index) {
+        <tr class="table-row">
+          <!-- Satır Etiketi -->
+          <td class="label-column py-3 text-sm font-medium border-b border-gray-200">
+            {{ row.label }}
+          </td>
 
-  <!-- Tablo Satırları -->
-  <div class="flex border-b py-3" *ngFor="let row of rows; let i = index">
-    <!-- Satır Etiketi -->
-    <div class="w-[30%] text-sm font-medium">
-      {{ row.label }}
-    </div>
+          <!-- Çubuklar Alanı -->
+          <td class="bar-column py-3 border-b border-gray-200 relative" colspan="2">
+            <!-- Sarı Çubuk (1. HZ) -->
+            <div class="bar bar-yellow"
+                 [ngStyle]="{
+                   'width.px': getBarStyles($index, true).width,
+                   'clip-path': getBarStyles($index, true).clipPath
+                 }">
+              {{ row.firstHalf }}
+            </div>
 
-    <!-- Değerler ve Çubuklar -->
-    <div class="w-[70%] flex items-center">
-      <!-- Çubuklar Alanı - Esnek yapı, tüm sol alanı kaplayan -->
-      <div class="flex-grow h-6 relative mr-4">
-        <!-- Sarı Çubuk (1. HZ) - Sol -->
-        <div class="absolute left-0 h-6 bg-yellow-400 flex items-center justify-center text-xs font-bold z-20"
-             [ngStyle]="{
-               'width.px': getBarStyles(i, true).width,
-               'clip-path': getBarStyles(i, true).clipPath
-             }">
-          {{ row.firstHalf }}
-        </div>
+            <!-- Siyah Çubuk (2. HZ) -->
+            <div class="bar bar-black"
+                 [ngStyle]="{
+                   'width.px': getBarStyles($index, false).width,
+                   'left.px': getBarStyles($index, false).left,
+                   'clip-path': getBarStyles($index, false).clipPath
+                 }">
+              {{ row.secondHalf }}
+            </div>
+          </td>
 
-        <!-- Siyah Çubuk (2. HZ) - Sağ -->
-        <div class="absolute h-6 bg-black text-white flex items-center justify-center text-xs font-bold z-10"
-             [ngStyle]="{
-               'width.px': getBarStyles(i, false).width,
-               'left.px': getBarStyles(i, false).left,
-               'clip-path': getBarStyles(i, false).clipPath
-             }">
-          {{ row.secondHalf }}
-        </div>
-      </div>
+          <!-- 90 Min Değeri (Boş) -->
+          <td class="value-column py-3 text-center text-sm border-b border-gray-200"></td>
 
-      <!-- Diğer Değerler - Eşit genişlikte üç sütun -->
-      <div class="w-[15%] text-right text-sm pr-2">{{ row.total }}</div>
-      <div class="w-[15%] text-right text-sm pr-2">{{ formatValue(row.average) }}</div>
-      <div class="w-[15%] text-right text-sm pr-2">{{ formatValue(row.league) }}</div>
-    </div>
-  </div>
+          <!-- Gesamtes Spiel Değeri -->
+          <td class="value-column py-3 text-center text-sm font-bold border-b border-gray-200">
+            {{ row.total }}
+          </td>
+
+          <!-- Ø Saison Değeri -->
+          <td class="value-column py-3 text-center text-sm border-b border-gray-200">
+            {{ formatValue(row.average) }}
+          </td>
+
+          <!-- Ø Liga Değeri -->
+          <td class="value-column py-3 text-center text-sm border-b border-gray-200">
+            {{ formatValue(row.league) }}
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
 </div>

@@ -1,7 +1,88 @@
-.bar-black {
-  clip-path: polygon(0% 0%, 95% 0%, 100% 100%, 0% 100%);
+/* Tablo stilleri */
+.stats-table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
 }
 
+/* Çubuk ortak stilleri */
+.bar {
+  position: absolute;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+/* Sarı çubuk */
 .bar-yellow {
-  clip-path: polygon(5% 0%, 100% 0%, 100% 100%, 0% 100%);
+  left: 0;
+  background-color: #facc15; /* bg-yellow-400 */
+  z-index: 20;
+}
+
+/* Siyah çubuk */
+.bar-black {
+  background-color: #000; /* bg-black */
+  color: white;
+  z-index: 10;
+}
+
+/* Başlık hücresi stilleri */
+th {
+  font-weight: normal;
+  vertical-align: middle;
+  text-align: center;
+  padding: 1rem 0.5rem;
+}
+
+/* İlk sütun (etiket sütunu) */
+th:first-child, td:first-child {
+  width: 30%;
+  text-align: left;
+}
+
+/* Başlık sütunları arası boşluk az olsun */
+.stats-table thead th {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+/* Çubuk içeren td için özel stil */
+td[colspan="2"] {
+  padding-right: 0.5rem; /* mr-4 karşılığı azaltıldı */
+  width: 35%; /* Genişliği azalttık */
+}
+
+/* Değer hücreleri - başlıkların altına gelsin */
+.stats-table tbody td:not(:first-child):not([colspan]) {
+  text-align: center;
+  width: calc(35% / 3); /* Eşit genişlikte üç sütun */
+}
+
+/* Tablo satırları */
+.border-row td {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Son satırın altında çizgi olmaması için */
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Satır arası boşluklar */
+tbody tr td {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* Satır altı çizgisi için */
+.border-b {
+  border-bottom-width: 1px;
+}
+
+.border-gray-200 {
+  border-color: #e5e7eb;
 }
