@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { StatsTableComponent } from './stats-table/stats-table.component'; // <== bunu ekle
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [StatsTableComponent], // <== bunu ekle
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'match-insights';
-}
+export class AppComponent {}

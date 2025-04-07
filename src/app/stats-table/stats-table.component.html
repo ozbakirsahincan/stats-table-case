@@ -1,0 +1,98 @@
+<div class="max-w-6xl mx-auto bg-white px-4">
+  <!-- BVB Logo ve Başlık -->
+  <div class="flex items-center gap-3 mb-1">
+    <div class="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center font-bold text-black">
+      <span>BVB</span>
+    </div>
+    <h1 class="text-2xl font-bold">Laufleistung</h1>
+  </div>
+
+  <!-- Sarı Çizgi -->
+  <div class="w-full h-0.5 bg-yellow-400 mb-6"></div>
+
+  <!-- Tablo Header (Gri Arka plan) -->
+  <div class="bg-gray-100 py-4 flex mb-1">
+    <!-- Boş sol alan -->
+    <div class="w-[30%]"></div>
+
+    <!-- Sağ alan kolonları (başlıklar) -->
+    <div class="w-[70%] flex">
+      <!-- 1. HZ (Sarı Kare) -->
+      <div class="flex-1 flex justify-center items-center">
+        <div class="w-4 h-4 bg-yellow-400"></div>
+        <div class="text-xs ml-1.5">1. HZ</div>
+      </div>
+
+      <!-- 2. HZ (Siyah Kare) -->
+      <div class="flex-1 flex justify-center items-center">
+        <div class="w-4 h-4 bg-black"></div>
+        <div class="text-xs ml-1.5">2. HZ</div>
+      </div>
+
+      <!-- 90 Min (Kronometre Sembolü) -->
+      <div class="flex-1 flex justify-center items-center relative">
+        <div class="flex items-center">
+          <span class="mr-1">⏱</span>
+          <span class="text-xs">90 Min Durchs.</span>
+        </div>
+        <!-- 90 Min Durchs. altından inen dikey çizgi -->
+        <div class="absolute w-px bg-gray-300 h-[500px] bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full z-10"></div>
+      </div>
+
+      <!-- Gesamtes Spiel -->
+      <div class="flex-1 flex justify-center items-center">
+        <span class="text-xs">Gesamtes Spiel</span>
+      </div>
+
+      <!-- Ø Saison (BVB Logo) -->
+      <div class="flex-1 flex justify-center items-center">
+        <div class="w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center text-[6px] font-bold">BVB</div>
+        <span class="text-xs ml-1.5">Ø Saison</span>
+      </div>
+
+      <!-- Ø Liga (L Logo) -->
+      <div class="flex-1 flex justify-center items-center">
+        <span class="text-red-600 text-xs font-bold mr-1">L</span>
+        <span class="text-xs">Ø Liga</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tablo Satırları -->
+  <div class="flex border-b py-3" *ngFor="let row of rows; let i = index">
+    <!-- Satır Etiketi -->
+    <div class="w-[30%] text-sm font-medium">
+      {{ row.label }}
+    </div>
+
+    <!-- Değerler ve Çubuklar -->
+    <div class="w-[70%] flex items-center">
+      <!-- Çubuklar Alanı - Esnek yapı, tüm sol alanı kaplayan -->
+      <div class="flex-grow h-6 relative mr-4">
+        <!-- Sarı Çubuk (1. HZ) - Sol -->
+        <div class="absolute left-0 h-6 bg-yellow-400 flex items-center justify-center text-xs font-bold z-20"
+             [ngStyle]="{
+               'width.px': getBarStyles(i, true).width,
+               'clip-path': getBarStyles(i, true).clipPath
+             }">
+          {{ row.firstHalf }}
+        </div>
+
+        <!-- Siyah Çubuk (2. HZ) - Sağ -->
+        <div class="absolute h-6 bg-black text-white flex items-center justify-center text-xs font-bold z-10"
+             [ngStyle]="{
+               'width.px': getBarStyles(i, false).width,
+               'left.px': getBarStyles(i, false).left,
+               'clip-path': getBarStyles(i, false).clipPath
+             }">
+          {{ row.secondHalf }}
+        </div>
+      </div>
+
+      <!-- Diğer Değerler - Eşit genişlikte üç sütun -->
+      <div class="w-[15%] text-right text-sm pr-2">{{ row.total }}</div>
+      <div class="w-[15%] text-right text-sm pr-2">{{ formatValue(row.average) }}</div>
+      <div class="w-[15%] text-right text-sm pr-2">{{ formatValue(row.league) }}</div>
+    </div>
+  </div>
+</div>
