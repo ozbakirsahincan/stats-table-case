@@ -2,9 +2,7 @@
   <!-- Başlık Alanı -->
   <header class="mb-6">
     <div class="flex items-center gap-3 mb-1">
-      <div class="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center font-bold text-black">
-        <span>BVB</span>
-      </div>
+      <img [src]="'/assets/bvb_logo.png'" alt="BVB Logo" class="w-10 h-10">
       <h1 class="text-2xl font-bold">Laufleistung</h1>
     </div>
     <div class="w-full h-0.5 bg-yellow-400"></div>
@@ -52,7 +50,7 @@
         <!-- Ø Saison Başlığı -->
         <th class="value-column py-4 font-normal text-center">
           <div class="flex justify-center items-center">
-            <div class="w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center text-[6px] font-bold mr-1.5">BVB</div>
+            <img [src]="'/assets/bvb_logo.png'" alt="BVB Logo" class="w-4 h-4 rounded-full mr-1.5">
             <span class="text-xs">Ø Saison</span>
           </div>
         </th>
@@ -60,7 +58,7 @@
         <!-- Ø Liga Başlığı -->
         <th class="value-column py-4 font-normal text-center">
           <div class="flex justify-center items-center">
-            <span class="text-red-600 text-xs font-bold mr-1">L</span>
+            <img [src]="'/assets/bundesliga_logo.png'" alt="Bundesliga Logo" class="w-4 h-4 mr-1.5">
             <span class="text-xs">Ø Liga</span>
           </div>
         </th>
