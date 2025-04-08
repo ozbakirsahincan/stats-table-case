@@ -11,7 +11,7 @@ import { FormatterService } from './services/formatter.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './stats-table.component.html',
-  styleUrls: ['./stats-table.component.css']
+  styleUrls: ['./stats-table.component.css'],
 })
 export class StatsTableComponent {
   // Veri modelleri
@@ -27,6 +27,7 @@ export class StatsTableComponent {
    * Çubuk stillerini hesaplar
    */
   public getBarStyles(rowIndex: number, isFirstHalf: boolean) {
+    // console.log("getBarStyles", rowIndex, isFirstHalf);
     return this.barStyleService.getBarStyles(rowIndex, isFirstHalf);
   }
 
@@ -34,6 +35,7 @@ export class StatsTableComponent {
    * Değerleri formatlar
    */
   public formatValue(value: number): string {
+    console.log("formatValue", value);
     return this.formatterService.formatValue(value);
   }
 }
